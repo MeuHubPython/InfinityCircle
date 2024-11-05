@@ -24,22 +24,36 @@ h2 {
     font-family: JetBrains Mono;
     font-size: 18px;
     margin-top: 0%;
-    margin-bottom: 8%;
+    margin-bottom: 2%;
 }
 
-button {
+#login,
+#register {
     background: linear-gradient(120deg, #6a01c5 0%, #00869e 100%);
     background-size: 200% 200%;
     animation: gradient 5s ease infinite;
-    -webkit-text-fill-color: rgba(0, 255, 255, 0.945);
     border-radius: 10px;
-    border: transparent;
-    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+    width: 15%;
+    color: rgba(0, 255, 255, 0.945);
     font-family: JetBrains Mono;
-    font-size: 35px;
+    font-size: 18px;
     font-weight: bold;
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 5%;
 }
 
+#register {
+    padding-right: 16px;
+}
+
+#login:hover,
+#register:hover,
 button:hover {
     background-size: 400% 400%;
     animation: gradient 1.3s ease infinite;
@@ -85,4 +99,11 @@ button:hover {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
 }

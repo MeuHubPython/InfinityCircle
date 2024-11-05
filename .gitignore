@@ -1,3 +1,5 @@
 *.pyc
 venv
 README.md
+app/database.db
+TODO.md
