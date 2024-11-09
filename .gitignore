@@ -3,4 +3,4 @@ venv
 README.md
 app/database.db
 TODO.md
-app/.env
+.env
