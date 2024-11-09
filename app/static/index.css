@@ -59,7 +59,7 @@ button:hover {
     animation: gradient 1.3s ease infinite;
 }
 
-@media (max-width: 534px) {
+@media (max-width: 540px) {
     h1 {
         font-size: 42px;
     }
@@ -68,8 +68,10 @@ button:hover {
         font-size: 12px;
     }
 
+    #login,
+    #register,
     button {
-        font-size: 25px;
+        font-size: 12px;
     }
 }
 

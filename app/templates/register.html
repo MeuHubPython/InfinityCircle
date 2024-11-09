@@ -12,17 +12,22 @@
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ url_for('static', path='/login.css') }}">
-    <title>Login</title>
+    <title>Register</title>
 </head>
 
 <body>
     <div class="container">
         <div class="content">
             <h1>Infinity Circle <i class="fa-solid fa-infinity"></i></h1>
+            {% if email_exists %}
+            <h2 class="wrong">Email already registered</h2>
+            {% endif %}
             <form action="/register" method="POST">
-                <input type="text" id="name" name="name" placeholder="Name" maxlength="40" required>
-                <input type="text" id="email" name="email" placeholder="Email" maxlength="40" required>
-                <input type="password" id="password" name="password" placeholder="Password" maxlength="40" required>
+                <input type="text" id="name" name="name" placeholder="Name" maxlength="40" minlength="3" required>
+                <input type="email" id="email" name="email" {% if email_exists %}class="wrong" {% endif
+                    %}placeholder="Email" minlength="6" maxlength="40" required>
+                <input type="password" id="password" name="password" placeholder="Password" minlength="6" maxlength="40"
+                    required>
                 <button type="submit">Sign Up <i class="fa-solid fa-infinity"></i></button>
             </form>
         </div>

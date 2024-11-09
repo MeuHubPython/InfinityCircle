@@ -3,7 +3,6 @@ from fastapi.templating import Jinja2Templates
 from sqlmodel import Session, select
 from schemas.user.user_register import CreateUser
 from database.init_db import get_session
-from services.user.register_user import register_user
 from services.user.update_user import update_user
 from services.user.remove_user import remove_user
 from models.user import User
@@ -18,9 +17,10 @@ async def get_all_users(session: Session = Depends(get_session)):
     return all_users
 
 
-@router.post("/register")
+"""@router.post("/register")
 async def create_user(new_user: CreateUser, session: Session = Depends(get_session)):
     return await register_user(new_user, session)
+"""
 
 
 @router.put("/update/{user_email}")

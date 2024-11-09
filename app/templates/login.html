@@ -23,8 +23,8 @@
             <h2 class="wrong">Invalid email or password</h2>
             {% endif %}
             <form action="/login/submit" method="POST">
-                <input type="text" id="email" {% if wrong %}class="wrong" {% endif %} name="email" placeholder="Email"
-                    maxlength="40" required>
+                <input type="email" id="email" {% if wrong %}class="wrong" {% endif %} name="email" placeholder="Email"
+                    maxlength="40" required">
                 <input type="password" id="password" {% if wrong %}class="wrong" {% endif %}" name="password"
                     placeholder="Password" maxlength="40" required>
                 <button type="submit" id="login">Login <i class="fa-solid fa-infinity"></i></button>

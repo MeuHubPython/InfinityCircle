@@ -82,6 +82,12 @@ a:hover {
     cursor: pointer;
 }
 
+@media (max-width: 640px) {
+    h1 {
+        font-size: 42px;
+    }
+}
+
 @keyframes gradient {
     0% {
         background-position: 0% 50%;

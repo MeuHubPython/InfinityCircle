@@ -1,6 +1,7 @@
 from models.user import User
 from schemas.user.user_register import CreateUser
 from fastapi import HTTPException
+from fastapi.templating import Jinja2Templates
 from sqlmodel import Session
 import bcrypt
 
@@ -17,7 +18,12 @@ async def register_user(request, new_user: CreateUser, session: Session):
         session.refresh(user)
 
     except Exception:
-        raise HTTPException(status_code=409, detail="Email already in use")
+        return Jinja2Templates(directory="templates").TemplateResponse(
+            request=request,
+            name="register.html",
+            context={"email_exists": True},
+            status_code=409,
+        )
 
     return {
         "message": "User created successfully",

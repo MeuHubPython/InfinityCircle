@@ -2,6 +2,7 @@ from models.user import User
 from sqlmodel import Session, select
 from fastapi import Form, Request
 from fastapi.templating import Jinja2Templates
+from middlewares.token import create_token
 import bcrypt
 
 
@@ -29,4 +30,5 @@ async def login_user(
             status_code=404,
         )
 
+    token = await create_token({"email": user.email}, request)
     return {"message": "Login successful", "email": user.email}
