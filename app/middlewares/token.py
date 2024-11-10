@@ -2,9 +2,10 @@ from fastapi import Request, HTTPException
 from fastapi.responses import RedirectResponse
 import dotenv, jwt, os
 
-env_variables = dotenv.load_dotenv()
-secret_key = os.getenv("SECRET_KEY")
-algorithm = os.getenv("ALGORITHM")
+ENV_VARIABLES = dotenv.load_dotenv()
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
+
 
 ALLOWED_HOSTS = [
     "http://127.0.0.1:8000/login",
@@ -21,7 +22,7 @@ ALLOWED_HOSTS = [
 
 
 async def create_token(data: dict, request: Request):
-    token = jwt.encode(data, secret_key, algorithm)
+    token = jwt.encode(data, SECRET_KEY, ALGORITHM)
     session_token = request.session["Authorization"] = token
     return session_token
 
@@ -32,7 +33,7 @@ async def authenticate_token(request: Request, call_next):
         if not token:
             return RedirectResponse("/login", status_code=302)
         try:
-            payload = jwt.decode(token, secret_key, algorithms=[algorithm])
+            payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
             return await call_next(request)
         except jwt.ExpiredSignatureError:
             raise HTTPException(status_code=401, detail="Token expired")
