@@ -1,8 +1,10 @@
 from fastapi import Request
 from schemas.posts.posts import CreatedPost
-from sqlmodel import Session
+from sqlmodel import Session, select
 from models.post import Post
+from models.user import User
 import jwt, os
+from datetime import datetime
 
 
 async def create_post(request: Request, new_post: CreatedPost, session: Session):
@@ -16,7 +18,8 @@ async def create_post(request: Request, new_post: CreatedPost, session: Session)
         title=new_post.title,
         body=new_post.body,
         user_id=payload["id"],
-        user_name=payload["user"],
+        user_name=session.exec(select(User).where(User.id == payload["id"])).one().name,
+        created_at=datetime.now().strftime("%D %H:%M"),
     )
     session.add(post)
     session.commit()

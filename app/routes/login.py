@@ -1,12 +1,13 @@
-from fastapi import APIRouter, Form, Depends, Request
+from fastapi import APIRouter, Form, Depends, Request, UploadFile, File
 from fastapi.responses import HTMLResponse
 from database.init_db import get_session
 from sqlmodel import Session
 from schemas.user.user_login import LoginSubmit
-from services.user.login_user import login_user
+from services.user.login_user import login_user, user_already_authenticated
 from services.user.register_user import register_user
 from fastapi.templating import Jinja2Templates
 from schemas.user.user_register import CreateUser
+from services.user.logout_user import logout_user
 
 
 router = APIRouter()
@@ -14,9 +15,7 @@ router = APIRouter()
 
 @router.get("/login", response_class=HTMLResponse)
 async def render_login(request: Request):
-    return Jinja2Templates(directory="templates").TemplateResponse(
-        request=request, name="login.html"
-    )
+    return await user_already_authenticated(request)
 
 
 @router.post("/login/submit", response_model=LoginSubmit)
@@ -39,10 +38,23 @@ async def render_register(request: Request):
 @router.post("/register")
 async def submit_register(
     request: Request,
+    profile_image: UploadFile = File(),
     name: str = Form(),
     email: str = Form(),
     password: str = Form(),
     session: Session = Depends(get_session),
 ):
-    created_user = CreateUser(name=name, email=email, password=password)
+    read_image = await profile_image.read()
+    created_user = CreateUser(
+        profile_image=read_image,
+        image_format=profile_image.content_type,
+        name=name,
+        email=email,
+        password=password,
+    )
     return await register_user(request, created_user, session)
+
+
+@router.get("/logout")
+async def logout(request: Request):
+    return await logout_user(request)

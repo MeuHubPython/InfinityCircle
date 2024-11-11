@@ -2,7 +2,11 @@
     <div class="post">
         <div class="post-header">
             <div class="post-author">
-                {{ post.user_name }}
+                <image src="{{ post.profile_image }}" alt="Profile Image" class="profile-image"
+                    onerror="this.src='/static/assets/android-chrome-512x512.png'"></image>
+                <div class="post-author-name">
+                    {{ post.user_name }}
+                </div>
             </div>
             <div class="post-title">
                 <a href="/post/{{ post.id }}">{{ post.title }}</a>

@@ -9,3 +9,4 @@ class Post(SQLModel, table=True):
     title: str
     body: str
     created_at: str = datetime.now().strftime("%D %H:%M")
+    profile_image: str | None = None

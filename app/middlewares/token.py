@@ -27,6 +27,13 @@ async def create_token(data: dict, request: Request):
     return session_token
 
 
+async def remove_token(request: Request):
+    delete_token = request.session.pop("Authorization", None)
+    if delete_token != None:
+        return True
+    return False
+
+
 async def authenticate_token(request: Request, call_next):
     if not request.url in ALLOWED_HOSTS:
         token = request.session.get("Authorization")

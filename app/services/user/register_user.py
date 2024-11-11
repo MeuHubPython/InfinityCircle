@@ -1,6 +1,5 @@
 from models.user import User
 from schemas.user.user_register import CreateUser
-from fastapi import HTTPException
 from fastapi.templating import Jinja2Templates
 from sqlmodel import Session
 import bcrypt
@@ -11,13 +10,20 @@ async def register_user(request, new_user: CreateUser, session: Session):
     try:
         hashed_password = bcrypt.hashpw(new_user.password.encode(), bcrypt.gensalt())
 
-        user = User(name=new_user.name, email=new_user.email, password=hashed_password)
+        user = User(
+            name=new_user.name,
+            email=new_user.email,
+            password=hashed_password,
+            profile_image=new_user.profile_image,
+            image_format=new_user.image_format,
+        )
 
         session.add(user)
         session.commit()
         session.refresh(user)
 
-    except Exception:
+    except Exception as e:
+        print(e)
         return Jinja2Templates(directory="templates").TemplateResponse(
             request=request,
             name="register.html",

@@ -9,5 +9,5 @@ async def get_me(request: Request, session: Session):
     payload = jwt.decode(
         token, os.getenv("SECRET_KEY"), algorithms=[os.getenv("ALGORITHM")]
     )
-    user = session.exec(select(User).where(User.email == payload["email"])).one()
+    user = session.exec(select(User).where(User.id == payload["id"])).one()
     return {"user": user.name, "email": user.email}

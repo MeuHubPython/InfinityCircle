@@ -6,4 +6,5 @@ class User(SQLModel, table=True):
     name: str
     email: str = Field(unique=True)
     password: bytes
-    token: str | None = None
+    profile_image: bytes | None = None
+    image_format: str | None = None

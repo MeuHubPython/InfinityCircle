@@ -27,6 +27,12 @@
 }
 
 header {
+    background-color: black;
+    z-index: 1000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,6 +46,7 @@ header {
 }
 
 body {
+    margin-top: 150px;
     background-color: black;
 
 }
@@ -49,15 +56,29 @@ a {
     font-size: 20px;
 }
 
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 10%;
+    margin: 0px;
+}
+
+.post-author-name {
+    font-size: 25px;
+
+}
+
 .post-title {
     margin: 10px 0px 2px 0px;
+    font-size: 20px;
 }
 
 .post-body {
     margin: 20px 0px 20px 0px;
     text-align: left;
     justify-content: left;
-    height: fit-content
+    height: fit-content;
+    font-size: 15px;
 }
 
 .post-date {
