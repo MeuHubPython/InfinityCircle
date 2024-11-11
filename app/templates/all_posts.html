@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static', path='/all_posts.css') }}">
+
+    <title>All posts</title>
+</head>
+<header>
+    <h1 id="Logo"> Infinity Circle <i class="fa-solid fa-infinity"></i></h1>
+    <div>
+        <a class="header-link" href="/" id="home">Home</a>
+        <a class="header-link" href="/posts/all_posts" id="all_posts">Feed</a>
+        <a class="header-link" href="/logout" id="logout">Logout</a>
+    </div>
+</header>
+
+<body>
+    {% for post in posts %}
+
+    {% include "post_component.html" %}
+
+    {% endfor %}
+</body>
+
+</html>

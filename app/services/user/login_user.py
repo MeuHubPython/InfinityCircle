@@ -30,5 +30,7 @@ async def login_user(
             status_code=404,
         )
 
-    token = await create_token({"user": user.name, "email": user.email}, request)
+    token = await create_token(
+        {"user": user.name, "email": user.email, "id": user.id}, request
+    )
     return {"message": "Login successful", "email": user.email}
