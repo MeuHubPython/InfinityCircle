@@ -11,7 +11,7 @@
     animation: gradient 5s ease infinite;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 50px;
+    font-size: 3.5vw;
     margin: 20px;
 }
 
@@ -21,9 +21,9 @@
     background-size: 200% 200%;
     animation: gradient 5s ease infinite;
     font-size: 20px;
-    margin: 20px;
-    padding: 10px;
-    border-radius: 15px;
+    margin: 1vw;
+    padding: 0.5vw;
+    border-radius: 0.8vw;
 }
 
 header {
@@ -61,6 +61,7 @@ a {
     height: 80px;
     border-radius: 10%;
     margin: 0px;
+    object-fit: cover;
 }
 
 .post-author-name {
@@ -100,16 +101,13 @@ a {
     cursor: pointer;
 }
 
-@media (max-width: 640px) {
-    .post {
-        width: 98%;
-        margin: 5px;
-    }
+.post:hover {
+    background: #6a01c5;
 }
 
-.post:hover,
 .header-link:hover {
-    background: #6a01c5;
+    background-size: 400% 400%;
+    animation: gradient 1.3s ease infinite 0.5s;
 }
 
 @keyframes gradient {

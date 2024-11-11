@@ -1,0 +1,183 @@
+* {
+    color: rgba(0, 255, 255, 0.945);
+    font-family: "JetBrains Mono", monospace;
+    font-weight: bold;
+}
+
+#Logo {
+    background: linear-gradient(120deg, #6a01c5 0%, #00869e 100%);
+    font-family: "Roboto", sans-serif;
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3.5vw;
+    margin: 20px;
+}
+
+#user-name-card {
+    background: linear-gradient(120deg, #6a01c5 0%, #00869e 100%);
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: Roboto;
+    font-size: 5vh;
+    font-weight: bold;
+    margin-bottom: 5%;
+}
+
+body {
+    margin-top: 100px;
+    background-color: black;
+
+}
+
+a {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+header {
+    background-color: black;
+    z-index: 1000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-style: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-width: 2px;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.header-link,
+.edit-links {
+    background: linear-gradient(120deg, #6a01c5 0%, #00869e 100%);
+    color: rgba(0, 255, 255, 0.945);
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+    font-size: 20px;
+    margin: 1vw;
+    padding: 0.5vw;
+    border-radius: 0.8vw;
+    cursor: pointer;
+}
+
+
+.edit-links:hover,
+.header-link:hover {
+    background-size: 400% 400%;
+    animation: gradient 1.3s ease infinite 0.5s;
+    cursor: pointer;
+}
+
+#delete:hover {
+    background-size: 400% 400%;
+    animation: gradient 1.3s ease infinite 0.5s;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 60vh
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-style: solid;
+    border-radius: 15px;
+    padding-top: 2px;
+    padding-bottom: 45px;
+    border-color: #6a01c5;
+    border-width: 2px;
+    width: 60vh
+}
+
+.profile-image {
+    border-radius: 15px;
+    padding: 2px;
+    width: 90%;
+    text-align: center;
+    margin-bottom: 10px;
+    object-fit: cover;
+
+}
+
+.card-text {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 90%;
+}
+
+.card-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 20px;
+}
+
+#delete {
+    background: linear-gradient(120deg, #c50101 0%, #9e4700 100%);
+}
+
+h1 {
+    background: linear-gradient(120deg, #6a01c5 0%, #00869e 100%);
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: Roboto;
+    font-size: 6.5vh;
+    font-weight: bold;
+    margin-bottom: 5%;
+}
+
+h2 {
+    background: linear-gradient(120deg, #6a01c5 0%, #00869e 100%);
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+    border-radius: 10px;
+    padding: 0px 5px 0px 5px;
+    color: rgba(0, 255, 255, 0.945);
+    font-family: JetBrains Mono;
+    font-size: 18px;
+    margin-top: 0%;
+    margin-bottom: 2%;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

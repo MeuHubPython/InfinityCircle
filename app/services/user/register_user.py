@@ -2,6 +2,7 @@ from models.user import User
 from schemas.user.user_register import CreateUser
 from fastapi.templating import Jinja2Templates
 from sqlmodel import Session
+from datetime import datetime
 import bcrypt
 
 
@@ -16,6 +17,7 @@ async def register_user(request, new_user: CreateUser, session: Session):
             password=hashed_password,
             profile_image=new_user.profile_image,
             image_format=new_user.image_format,
+            created_at=datetime.now().strftime("%D %H:%M"),
         )
 
         session.add(user)
