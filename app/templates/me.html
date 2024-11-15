@@ -2,17 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% include "components/head_component.html" %}
     <link rel="stylesheet" href="{{ url_for('static', path='/me.css') }}">
 
     <title>Me</title>
 </head>
-{% include "header_component.html" %}
+{% include "components/header_component.html" %}
 
 <body>
     <div class="container">
@@ -36,8 +31,9 @@
                     </div>
                 </div>
                 <div class="card-buttons">
-                    <a class="edit-links" id="delete" href="/me/delete" title="delete" id="delete">Delete</a>
-                    <a class="edit-links" href="/me/edit" title="edit" id="edit">Edit</a>
+                    <a class="edit-links" id="delete" href="/user/me/delete" title="delete" id="delete"
+                        onclick="return confirm('Are you sure you want to delete your account?')">Delete</a>
+                    <a class="edit-links" href="/user/me/edit" title="edit" id="edit">Edit</a>
                     <a class="edit-links" href="/logout" title="logout" id="logout">Logout</a>
                 </div>
             </div>
