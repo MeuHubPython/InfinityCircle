@@ -1,4 +1,5 @@
 from fastapi import Request
+from fastapi.responses import RedirectResponse
 from schemas.posts.posts import CreatedPost
 from sqlmodel import Session, select
 from models.post import Post
@@ -23,4 +24,4 @@ async def create_post(request: Request, new_post: CreatedPost, session: Session)
     )
     session.add(post)
     session.commit()
-    return {"message": "Post created successfully", "post": post}
+    return RedirectResponse("/posts/connections", status_code=302)

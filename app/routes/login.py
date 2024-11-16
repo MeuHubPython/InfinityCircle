@@ -10,7 +10,7 @@ from schemas.user.user_register import CreateUser
 from services.user.logout_user import logout_user
 
 
-router = APIRouter()
+router = APIRouter(tags=["login"])
 
 
 @router.get("/login", response_class=HTMLResponse)
@@ -18,7 +18,7 @@ async def render_login(request: Request):
     return await user_already_authenticated(request)
 
 
-@router.post("/login/submit", response_model=LoginSubmit)
+@router.post("/login", response_model=LoginSubmit)
 async def submit_login(
     request: Request,
     email: str = Form(),

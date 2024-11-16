@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, Form, Request
-from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 from sqlmodel import Session, select
 from schemas.user.user_register import CreateUser
 from database.init_db import get_session
@@ -32,6 +32,6 @@ async def modify_user(
     return await update_user(user_email, modified_user, session)
 
 
-@router.get("/me/delete")
+@router.delete("/me/delete", response_class=HTMLResponse)
 async def delete_user(request: Request, session: Session = Depends(get_session)):
     return await remove_user(request, session)

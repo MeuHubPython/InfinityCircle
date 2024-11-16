@@ -32,7 +32,7 @@ async def login_user(
         )
 
     token = await create_token({"id": user.id}, request)
-    return RedirectResponse("/posts/all_posts", status_code=302)
+    return RedirectResponse("/posts/connections", status_code=302)
 
 
 async def user_already_authenticated(request: Request):
@@ -52,4 +52,4 @@ async def user_already_authenticated(request: Request):
         return Jinja2Templates(directory="templates").TemplateResponse(
             request=request, name="login.html", status_code=302
         )
-    return RedirectResponse("/posts/all_posts", status_code=302)
+    return RedirectResponse("/posts/connections", status_code=302)

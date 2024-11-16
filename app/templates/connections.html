@@ -3,13 +3,14 @@
 
 <head>
     {% include "components/head_component.html" %}
-    <link rel="stylesheet" href="{{ url_for('static', path='/all_posts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='/connections.css') }}">
 
     <title>Connections</title>
 </head>
 {% include "components/header_component.html" %}
 
 <body>
+    {% include "components/create_post_component.html" %}
     {% for post in posts %}
 
     {% include "components/post_component.html" %}

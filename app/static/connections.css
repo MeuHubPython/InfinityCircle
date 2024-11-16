@@ -51,9 +51,67 @@ body {
 
 }
 
+.create-connection {
+    background: linear-gradient(120deg, #6a01c5 0%, #00869e 100%);
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+.form-connection {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
 a {
     text-decoration: none;
     font-size: 20px;
+}
+
+#title {
+    width: 98.5%;
+}
+
+#body {
+    height: 100px;
+    width: 98.5%;
+    margin-bottom: 0px;
+    border-width: 2px;
+    border-bottom: solid 2px rgba(0, 255, 255, 0.945);
+    border-top: solid 2px rgba(0, 255, 255, 0.945);
+    resize: none;
+}
+
+#button-connection {
+    background: transparent;
+    padding: 10px;
+    margin: 3px;
+    color: rgba(0, 255, 255, 0.945);
+    font-family: JetBrains Mono;
+    font-size: 18px;
+    border-style: none;
+    outline: none;
+    margin: 0px;
+    border-radius: 10px;
+}
+
+textarea,
+input {
+    background: transparent;
+    padding: 10px;
+    margin: 3px;
+    width: 95%;
+    color: rgba(0, 255, 255, 0.945);
+    font-family: JetBrains Mono;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    margin: 0px;
 }
 
 .profile-image {
@@ -105,7 +163,13 @@ a {
     background: #6a01c5;
 }
 
+
+#button-connection:hover {
+    background-color: #6a01c5;
+}
+
 .header-link:hover {
+    background: linear-gradient(120deg, #6a01c5 0%, #00869e 100%);
     background-size: 400% 400%;
     animation: gradient 1.3s ease infinite 0.5s;
 }

@@ -14,7 +14,7 @@
             {% if wrong %}
             <h2 class="wrong">Invalid email or password</h2>
             {% endif %}
-            <form action="/login/submit" method="POST">
+            <form action="/login" method="POST">
                 <input type="email" id="email" {% if wrong %}class="wrong" {% endif %} name="email" placeholder="Email"
                     maxlength="40" required">
                 <input type="password" id="password" {% if wrong %}class="wrong" {% endif %}" name="password"
