@@ -34,4 +34,4 @@ async def root(request: Request):
     return templates.TemplateResponse(request=request, name="index.html")
 
 
-app.add_middleware(SessionMiddleware, secret_key=os.getenv("SECRET_KEY"), max_age=200)
+app.add_middleware(SessionMiddleware, secret_key=os.getenv("SECRET_KEY"), max_age=600)

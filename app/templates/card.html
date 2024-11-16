@@ -34,10 +34,10 @@
                     </div>
                 </div>
                 <div class="card-buttons">
-                    <a class="edit-links" id="delete" href="/user/me/delete" title="delete" id="delete"
-                        onclick="return confirm('Are you sure you want to delete your account?')">Delete</a>
-                    <a class="edit-links" href="/user/me/edit" title="edit" id="edit">Edit</a>
-                    <a class="edit-links" href="/logout" title="logout" id="logout">Logout</a>
+                    {% if user.id != current_user.id %}
+                    <a class="edit-links" href="/user/flow/{{ user.id }}" id="flow">Flow On <i
+                            class="fa-solid fa-infinity"></i></a>
+                    {% endif %}
                 </div>
             </div>
         </div>

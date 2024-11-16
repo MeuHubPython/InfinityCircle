@@ -6,6 +6,7 @@ from database.init_db import get_session
 from services.user.update_user import update_user
 from services.user.remove_user import remove_user
 from services.user.me import get_me
+from services.user.get_card import get_card
 from models.user import User
 
 router = APIRouter(prefix="/user", tags=["user"])
@@ -23,6 +24,13 @@ async def get_user_information(
     request: Request, session: Session = Depends(get_session)
 ):
     return await get_me(request, session)
+
+
+@router.get("/cards/{user_id}")
+async def get_user_cards(
+    user_id: int, request: Request, session: Session = Depends(get_session)
+):
+    return await get_card(user_id, request, session)
 
 
 @router.put("/update/{user_email}")

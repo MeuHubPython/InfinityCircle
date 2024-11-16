@@ -7,9 +7,10 @@
         <br> Create Connection
     </div>
     <form action="/posts/connections" class="form-connection" method="POST">
-        <input id="title" type="text" name="title" placeholder="(Title) Say what's flowing in your mind..." required>
+        <input id="title" type="text" name="title" placeholder="(Title) Say what's flowing in your mind..."
+            maxlength="60">
         <textarea id="body" type="text" name="body" placeholder="(Body) Create connections through your words..."
-            required></textarea>
+            maxlength="1000" required></textarea>
         <button id="button-connection" type="submit">Connect <i class="fa-solid fa-infinity"></i></button>
     </form>
 </div>

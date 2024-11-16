@@ -5,7 +5,11 @@
                 <image src="{{ post.profile_image }}" alt="Profile Image" class="profile-image"
                     onerror="this.src='/static/assets/android-chrome-512x512.png'"></image>
                 <div class="post-author-name">
+                    {% if post.user_id != user.id %}
+                    <a href="/user/cards/{{ post.user_id }}" id="connection-author">{{ post.user_name }}</a>
+                    {% else %}
                     {{ post.user_name }}
+                    {% endif %}
                 </div>
             </div>
             <div class="post-title">

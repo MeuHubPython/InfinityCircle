@@ -127,6 +127,15 @@ input {
 
 }
 
+#connection-author {
+    font-size: 25px;
+}
+
+#connection-author:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .post-title {
     margin: 10px 0px 2px 0px;
     font-size: 20px;

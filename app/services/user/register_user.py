@@ -1,6 +1,7 @@
 from models.user import User
 from schemas.user.user_register import CreateUser
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import RedirectResponse
 from sqlmodel import Session
 from datetime import datetime
 import bcrypt
@@ -33,8 +34,4 @@ async def register_user(request, new_user: CreateUser, session: Session):
             status_code=409,
         )
 
-    return {
-        "message": "User created successfully",
-        "name": user.name,
-        "email": user.email,
-    }
+    return RedirectResponse("/login", status_code=302)
