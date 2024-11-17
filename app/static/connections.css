@@ -65,7 +65,8 @@ body {
 .form-connection {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: center;
+    width: 100%;
 }
 
 a {
@@ -74,12 +75,12 @@ a {
 }
 
 #title {
-    width: 98.5%;
+    width: 99%;
 }
 
 #body {
     height: 100px;
-    width: 98.5%;
+    width: 99%;
     margin-bottom: 0px;
     border-width: 2px;
     border-bottom: solid 2px rgba(0, 255, 255, 0.945);
@@ -98,6 +99,7 @@ a {
     outline: none;
     margin: 0px;
     border-radius: 10px;
+    width: 100%;
 }
 
 textarea,
@@ -165,16 +167,12 @@ input {
     padding: 10px;
     margin: 10px;
     border-radius: 15px;
-    cursor: pointer;
-}
-
-.post:hover {
-    background: #6a01c5;
 }
 
 
 #button-connection:hover {
     background-color: #6a01c5;
+    cursor: pointer;
 }
 
 .header-link:hover {
@@ -182,6 +180,37 @@ input {
     background-size: 400% 400%;
     animation: gradient 1.3s ease infinite 0.5s;
 }
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-top: rgba(0, 255, 255, 0.945) solid 2px;
+}
+
+.connection-button {
+    background: transparent;
+    width: 50%;
+    padding: 10px;
+    margin: 0px;
+    color: rgba(0, 255, 255, 0.945);
+    font-family: JetBrains Mono;
+    font-size: 18px;
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+
+}
+
+#comment-button {
+    border-left: rgba(0, 255, 255, 0.945) solid 2px;
+}
+
+.connection-button:hover {
+    background-color: #6a01c5;
+}
+
 
 @keyframes gradient {
     0% {

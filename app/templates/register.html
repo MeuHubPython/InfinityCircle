@@ -18,9 +18,10 @@
                 <label id="label_image" for="image">Profile Image</label>
                 <input type="file" id="profile_image" name="profile_image" placeholder="Profile Image"
                     accept="image/png, image/jpeg">
-                <input type="text" id="name" name="name" placeholder="Name" maxlength="40" minlength="3" required>
+                <input type="text" id="name" name="name" placeholder="Name" maxlength="40" minlength="3"
+                    autocomplete="off" required>
                 <input type="email" id="email" name="email" {% if email_exists %}class="wrong" {% endif
-                    %}placeholder="Email" minlength="6" maxlength="40" required>
+                    %}placeholder="Email" minlength="6" maxlength="40" autocomplete="off" required>
                 <input type="password" id="password" name="password" placeholder="Password" minlength="6" maxlength="40"
                     required>
                 <button type="submit">Sign Up <i class="fa-solid fa-infinity"></i></button>
