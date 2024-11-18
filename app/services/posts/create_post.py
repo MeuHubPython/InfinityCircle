@@ -21,7 +21,10 @@ async def create_post(request: Request, new_post: CreatedPost, session: Session)
         user_id=payload["id"],
         user_name=session.exec(select(User).where(User.id == payload["id"])).one().name,
         created_at=datetime.now().strftime("%D %H:%M"),
+        profile_image=session.exec(select(User).where(User.id == payload["id"]))
+        .one()
+        .image_encoded,
     )
     session.add(post)
     session.commit()
-    return RedirectResponse("/posts/connections", status_code=302)
+    return RedirectResponse("/connections/", status_code=302)

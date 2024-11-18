@@ -16,9 +16,6 @@ async def get_card(user_id: int, request: Request, session: Session):
 
     user = session.exec(select(User).where(User.id == user_id)).one()
 
-    encoded_image = b64encode(user.profile_image).decode("utf-8")
-    user.image_encoded = "data:" + user.image_format + ";base64," + encoded_image
-
     return Jinja2Templates(directory="templates").TemplateResponse(
         request=request,
         name="card.html",

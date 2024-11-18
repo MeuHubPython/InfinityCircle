@@ -4,20 +4,25 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse
 from sqlmodel import Session
 from datetime import datetime
+from base64 import b64encode
 import bcrypt
 
 
-async def register_user(request, new_user: CreateUser, session: Session):
+async def register_user(
+    request, new_user: CreateUser, session: Session, profile_image: bytes | None = None
+):
 
     try:
         hashed_password = bcrypt.hashpw(new_user.password.encode(), bcrypt.gensalt())
+        image = await profile_image.read()
+        image_encoded = b64encode(image).decode("utf-8")
+        user_image = "data:" + profile_image.content_type + ";base64," + image_encoded
 
         user = User(
             name=new_user.name,
             email=new_user.email,
             password=hashed_password,
-            profile_image=new_user.profile_image,
-            image_format=new_user.image_format,
+            image_encoded=user_image,
             created_at=datetime.now().strftime("%D %H:%M"),
         )
 

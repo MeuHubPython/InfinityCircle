@@ -1,8 +1,8 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Depends
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from database.init_db import create_table
+from database.init_db import create_table, get_session
 from routes.user import router as user_router
 from routes.login import router as login_router
 from routes.post import router as posts_router

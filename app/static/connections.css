@@ -167,8 +167,12 @@ input {
     padding: 10px;
     margin: 10px;
     border-radius: 15px;
+    cursor: pointer;
 }
 
+.post:hover {
+    background: #6a01c5;
+}
 
 #button-connection:hover {
     background-color: #6a01c5;

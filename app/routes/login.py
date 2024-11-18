@@ -44,15 +44,12 @@ async def submit_register(
     password: str = Form(),
     session: Session = Depends(get_session),
 ):
-    read_image = await profile_image.read()
     created_user = CreateUser(
-        profile_image=read_image,
-        image_format=profile_image.content_type,
         name=name,
         email=email,
         password=password,
     )
-    return await register_user(request, created_user, session)
+    return await register_user(request, created_user, session, profile_image)
 
 
 @router.get("/logout")
