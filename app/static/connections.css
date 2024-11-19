@@ -88,7 +88,7 @@ a {
     resize: none;
 }
 
-#button-connection {
+.button-connection {
     background: transparent;
     padding: 10px;
     margin: 3px;
@@ -100,6 +100,17 @@ a {
     margin: 0px;
     border-radius: 10px;
     width: 100%;
+}
+
+#flow {
+    border-top: rgba(0, 255, 255, 0.945) solid 2px;
+    border-radius: 0px;
+    width: 100%;
+}
+
+#flow:hover {
+    background: #6a01c5;
+    cursor: pointer;
 }
 
 textarea,
@@ -174,7 +185,21 @@ input {
     background: #6a01c5;
 }
 
-#button-connection:hover {
+.post-by-id {
+    background: linear-gradient(120deg, #6a01c5 0%, #00869e 100%);
+    justify-content: center;
+    content: center;
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #6a01c5;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+.button-connection:hover {
     background-color: #6a01c5;
     cursor: pointer;
 }

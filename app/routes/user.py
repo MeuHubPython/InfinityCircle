@@ -40,6 +40,6 @@ async def modify_user(
     return await update_user(user_email, modified_user, session)
 
 
-@router.delete("/me/delete", response_class=HTMLResponse)
+@router.get("/me/delete", response_class=HTMLResponse)
 async def delete_user(request: Request, session: Session = Depends(get_session)):
     return await remove_user(request, session)

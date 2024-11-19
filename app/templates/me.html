@@ -28,6 +28,12 @@
                     </div>
                     <div class="card-bio">
                         Description: {{ user.description }}
+                        <br>
+                        <i class="fa-solid fa-infinity"></i> {{ user.flows_count }}
+                        <br>
+                        <i class="fa-solid fa-newspaper"></i> {{ user.posts_count }}
+                        <br>
+                        <i class="fa-solid fa-comment-dots"></i> {{ user.comments_count }}
                     </div>
                     <div class="created_at">
                         Created At: {{ user.created_at }}

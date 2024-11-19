@@ -6,20 +6,21 @@
     <link rel="stylesheet" href="{{ url_for('static', path='/connections.css') }}">
     <title>{{ post.title }}</title>
 </head>
+
 {% include "components/header_component.html" %}
 
 <body>
     <div>
-        <div class="post" style="cursor: default;">
-            <div class="post-header">
+        <div class="post-by-id">
+            <div class=" post-header">
                 <div class="post-author">
-                    <image src="{{ post.profile_image }}" alt="Profile Image" class="profile-image"
+                    <image src="{{ post.user.image_encoded }}" alt="Profile Image" class="profile-image"
                         onerror="this.src='/static/assets/android-chrome-512x512.png'"></image>
                     <div class="post-author-name">
-                        {% if post.user_id != user.id %}
-                        <a href="/user/cards/{{ post.user_id }}" id="connection-author">{{ post.user_name }}</a>
+                        {% if post.user.id != user.id %}
+                        <a href="/user/cards/{{ post.user.id }}" id="connection-author">{{ post.user.name }}</a>
                         {% else %}
-                        {{ post.user_name }}
+                        {{ post.user.name }}
                         {% endif %}
                     </div>
                 </div>
@@ -35,14 +36,38 @@
             </div>
             <div class="post-footer">
                 <div class="post-likes">
-                    <i class="fa-solid fa-infinity"></i> {{ post.likes }}
+                    <i class="fa-solid fa-infinity"></i> {{ post.flows_count }}
                 </div>
                 <div class="post-comments">
-                    <i class="fa-solid fa-comment-dots"></i> {{ post.comments }}
+                    <i class="fa-solid fa-comment-dots"></i> {{ post.comments_count }}
+                </div>
+                <br>
+                <div class="post-buttons">
+                    <form action="/connections/{{ post.id }}/flow" method="POST">
+                        <button id="flow" class="button-connection" type="submit">Flow <i
+                                class="fa-solid fa-infinity"></i></button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <div class="create-connection">
+        <div class="post-author">
+            <image src="{{ user.image_encoded }}" alt="Profile Image" class="profile-image"
+                onerror="this.src='/static/assets/android-chrome-512x512.png'">
+            </image>
+            <div class="post-author-name">{{ user.name }}</div>
+            <br> Comment
+        </div>
+        <form action="/connections/{{ post.id }}/comment" class="form-connection" method="POST">
+            <textarea id="body" type="text" name="body" placeholder="(Body) Share your thoughts..." maxlength="1000"
+                required autocomplete="off"></textarea>
+            <button class="button-connection" type="submit">Comment <i class="fa-solid fa-infinity"></i></button>
+        </form>
+    </div>
+    {% for comment in post.comments %}
+    {% include "components/comment_component.html" %}
+    {% endfor %}
 </body>
 
 </html>

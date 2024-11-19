@@ -1,4 +1,4 @@
-from sqlmodel import SQLModel, Field
+from sqlmodel import SQLModel, Field, Relationship
 from datetime import datetime
 
 
@@ -11,3 +11,11 @@ class User(SQLModel, table=True):
     email: str = Field(unique=True)
     password: bytes
     created_at: str = datetime.now().strftime("%D %H:%M")
+
+    posts: list["Post"] = Relationship(back_populates="user", cascade_delete=True)  # type: ignore
+    comments: list["Comment"] = Relationship(back_populates="user")  # type: ignore
+    flows: list["Flow"] = Relationship(back_populates="user", cascade_delete=True)  # type: ignore
+
+    flows_count: int = 0
+    posts_count: int = 0
+    comments_count: int = 0

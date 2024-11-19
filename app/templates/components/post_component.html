@@ -2,18 +2,18 @@
     <div class="post">
         <div class="post-header">
             <div class="post-author">
-                <image src="{{ post.profile_image }}" alt="Profile Image" class="profile-image"
+                <image src="{{ post.user.image_encoded }}" alt="Profile Image" class="profile-image"
                     onerror="this.src='/static/assets/android-chrome-512x512.png'"></image>
                 <div class="post-author-name">
-                    {% if post.user_id != user.id %}
-                    <a href="/user/cards/{{ post.user_id }}" id="connection-author">{{ post.user_name }}</a>
+                    {% if post.user.id != user.id %}
+                    <a href="/user/cards/{{ post.user.id }}" id="connection-author">{{ post.user.name }}</a>
                     {% else %}
-                    {{ post.user_name }}
+                    {{ post.user.name }}
                     {% endif %}
                 </div>
             </div>
             <div class="post-title">
-                <a href="/post/{{ post.id }}">{{ post.title }}</a>
+                <a href="/connections/{{ post.id }}">{{ post.title }}</a>
             </div>
             <div class="post-date">
                 {{ post.created_at }}
@@ -26,10 +26,10 @@
         </a>
         <div class="post-footer">
             <div class="post-likes">
-                <i class="fa-solid fa-infinity"></i> {{ post.likes }}
+                <i class="fa-solid fa-infinity"></i> {{ post.flows_count }}
             </div>
             <div class="post-comments">
-                <i class="fa-solid fa-comment-dots"></i> {{ post.comments }}
+                <i class="fa-solid fa-comment-dots"></i> {{ post.comments_count }}
             </div>
         </div>
     </div>

@@ -4,8 +4,8 @@ from schemas.posts.posts import CreatedPost
 from sqlmodel import Session, select
 from models.post import Post
 from models.user import User
-import jwt, os
 from datetime import datetime
+import jwt, os
 
 
 async def create_post(request: Request, new_post: CreatedPost, session: Session):
@@ -15,16 +15,19 @@ async def create_post(request: Request, new_post: CreatedPost, session: Session)
         algorithms=[os.getenv("ALGORITHM")],
     )
 
+    user = session.exec(select(User).where(User.id == payload["id"])).one()
+
     post = Post(
         title=new_post.title,
+        user_id=user.id,
         body=new_post.body,
-        user_id=payload["id"],
-        user_name=session.exec(select(User).where(User.id == payload["id"])).one().name,
         created_at=datetime.now().strftime("%D %H:%M"),
-        profile_image=session.exec(select(User).where(User.id == payload["id"]))
-        .one()
-        .image_encoded,
     )
+
+    user.posts.append(post)
+    user.posts_count = len(user.posts)
+
     session.add(post)
+    session.add(user)
     session.commit()
     return RedirectResponse("/connections/", status_code=302)
