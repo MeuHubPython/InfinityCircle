@@ -37,9 +37,37 @@
             <div class="post-footer">
                 <div class="post-likes">
                     <i class="fa-solid fa-infinity"></i> {{ post.flows_count }}
+                    {% if post.flows_count <= 15 %} {% for flow in post.flows %} <image
+                        src="{{ flow.user.image_encoded }}" alt="Profile Image" class="flow-mini-image"
+                        onerror="this.src='/static/assets/android-chrome-512x512.png'">
+                        </image>
+                        {% endfor %}
+                        {% endif %}
+                        {% if post.flows_count > 15 %}
+                        {% for flow in range(15) %}
+                        <image src="{{ post.flows[flow].user.image_encoded }}" alt="Profile Image"
+                            class="flow-mini-image" onerror="this.src='/static/assets/android-chrome-512x512.png'">
+                        </image>
+                        {% endfor %}
+                        {% endif %}
+
+
                 </div>
                 <div class="post-comments">
                     <i class="fa-solid fa-comment-dots"></i> {{ post.comments_count }}
+                    {% if post.comments_count <= 15 %} {% for comment in post.comments %} <image
+                        src="{{ comment.user.image_encoded }}" alt="Profile Image" class="flow-mini-image"
+                        onerror="this.src='/static/assets/android-chrome-512x512.png'">
+                        </image>
+                        {% endfor %}
+                        {% endif %}
+                        {% if post.comments_count > 15 %}
+                        {% for comment in range(15) %}
+                        <image src="{{ post.comments[comment].user.image_encoded }}" alt="Profile Image"
+                            class="flow-mini-image" onerror="this.src='/static/assets/android-chrome-512x512.png'">
+                        </image>
+                        {% endfor %}
+                        {% endif %}
                 </div>
                 <br>
                 <div class="post-buttons">

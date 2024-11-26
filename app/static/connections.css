@@ -135,6 +135,14 @@ input {
     object-fit: cover;
 }
 
+.flow-mini-image {
+    width: 15px;
+    height: 15px;
+    border-radius: 10%;
+    margin: 0px;
+    object-fit: cover;
+}
+
 .post-author-name {
     font-size: 25px;
 

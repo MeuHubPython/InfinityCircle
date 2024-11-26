@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include "components/head_component.html" %}
+    <link rel="stylesheet" href="{{ url_for('static', path='/me.css') }}">
+
+    <title>Me</title>
+</head>
+{% include "components/header_component.html" %}
+
+<body>
+    <div class="container">
+        <div class="content">
+            <h1 id="user-name-card">{{ user.name }}.card</h1>
+            <div class="card">
+                <image src="{{ user.image_encoded }}" alt="Profile Image" class="profile-image"
+                    onerror="this.src='/static/assets/android-chrome-512x512.png'"></image>
+                <div class="card-text">
+                    <div class="card-name">
+                        Name: {{ user.name }}
+                    </div>
+                    <div class="card-age">
+                        Age: {{ user.age }}
+                    </div>
+                    <div class="card-email">
+                        Email: {{ user.email }}
+                    </div>
+                    <div class="card-bio">
+                        Description: {{ user.description }}
+                        <br>
+                        <i class="fa-solid fa-infinity"></i> {{ user.flows_count }}
+                        <br>
+                        <i class="fa-solid fa-newspaper"></i> {{ user.posts_count }}
+                        <br>
+                        <i class="fa-solid fa-comment-dots"></i> {{ user.comments_count }}
+                    </div>
+                    <div class="created_at">
+                        Created At: {{ user.created_at }}
+                    </div>
+                </div>
+                <div class="card-buttons">
+                    <a class="edit-links" id="delete" href="/user/me/" title="cancel">Cancel</a>
+                    <a class="edit-links" href="/logout" title="logout" id="logout">Save</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

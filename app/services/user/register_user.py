@@ -23,7 +23,7 @@ async def register_user(
             email=new_user.email,
             password=hashed_password,
             image_encoded=user_image,
-            created_at=datetime.now().strftime("%D %H:%M"),
+            created_at=datetime.now().strftime("%d/%m/%y %H:%M"),
         )
 
         session.add(user)

@@ -21,7 +21,7 @@ async def create_post(request: Request, new_post: CreatedPost, session: Session)
         title=new_post.title,
         user_id=user.id,
         body=new_post.body,
-        created_at=datetime.now().strftime("%D %H:%M"),
+        created_at=datetime.now().strftime("%d/%m/%y %H:%M"),
     )
 
     user.posts.append(post)

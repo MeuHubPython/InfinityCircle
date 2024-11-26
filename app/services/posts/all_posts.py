@@ -20,11 +20,12 @@ async def all_posts(request: Request, session: Session):
     )
     user = session.exec(select(User).where(User.id == payload["id"])).one()
 
+    posts_sorted_by_date = sorted(posts, key=lambda post: post.created_at, reverse=True)
     return Jinja2Templates(directory="templates").TemplateResponse(
         request,
         "connections.html",
         context={
-            "posts": posts,
+            "posts": posts_sorted_by_date,
             "user": user,
         },
     )
