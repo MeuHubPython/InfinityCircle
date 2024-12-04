@@ -12,9 +12,10 @@ class Comment(SQLModel, table=True):
     body: str
     created_at: str = datetime.now().strftime("%D %H:%M")
 
-    user: User = Relationship(back_populates="comments")
+    user: User = Relationship(back_populates="comments")  # type: ignore
     post: Optional[Post] = Relationship(back_populates="comments")
     flows: list["Flow"] = Relationship(back_populates="comment")  # type: ignore
+    mentions: list["Mention"] = Relationship(back_populates="comment")  # type: ignore
 
     flows_counts: int = 0
     comments_counts: int = 0

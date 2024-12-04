@@ -7,10 +7,12 @@
         <br> Create Connection
     </div>
     <form action="/connections/" class="form-connection" method="POST">
+        <input id="mentions" type="text" name="mentions" placeholder="(Mentions) #usercolor" maxlength="60"
+            autocomplete="off">
         <input id="title" type="text" name="title" placeholder="(Title) Say what's flowing in your mind..."
-            maxlength="60" autocomplete="off">
+            maxlength="60" autocomplete="off" required>
         <textarea id="body" type="text" name="body" placeholder="(Body) Create connections through your words..."
-            maxlength="1000" required autocomplete="off"></textarea>
+            maxlength="1000" required autocomplete="off" required></textarea>
         <button class="button-connection" type="submit">Connect <i class="fa-solid fa-infinity"></i></button>
     </form>
 </div>

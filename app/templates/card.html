@@ -4,7 +4,6 @@
 <head>
     {% include "components/head_component.html" %}
     <link rel="stylesheet" href="{{ url_for('static', path='/me.css') }}">
-
     <title>Me</title>
 </head>
 {% include "components/header_component.html" %}
@@ -17,6 +16,11 @@
                 <image src="{{ user.image_encoded }}" alt="Profile Image" class="profile-image"
                     onerror="this.src='/static/assets/android-chrome-512x512.png'"></image>
                 <div class="card-text">
+                    <div class="user-color">
+                        Color: {{ user.color }} <i class="fa-regular fa-square"
+                            style="background-color: {{ user.color }}; color: {{ user.color }};" </i></i>
+
+                    </div>
                     <div class="card-name">
                         Name: {{ user.name }}
                     </div>

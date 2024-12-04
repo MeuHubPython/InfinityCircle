@@ -26,11 +26,12 @@ async def get_post(
 @router.post("/")
 async def post(
     request: Request,
+    mentions: str | None = Form(),
     title: str = Form(),
     body: str = Form(),
     session: Session = Depends(get_session),
 ):
-    new_post = CreatedPost(title=title, body=body)
+    new_post = CreatedPost(mentions=mentions, title=title, body=body)
     return await create_post(request, new_post, session)
 
 

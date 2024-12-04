@@ -13,6 +13,7 @@ class Post(SQLModel, table=True):
     user: User = Relationship(back_populates="posts")
     comments: list["Comment"] = Relationship(back_populates="post", cascade_delete=True)  # type: ignore
     flows: list["Flow"] = Relationship(back_populates="post")  # type: ignore
+    mentions: list["Mention"] = Relationship(back_populates="post", cascade_delete=True)  # type: ignore
 
     comments_count: int = 0
     flows_count: int = 0

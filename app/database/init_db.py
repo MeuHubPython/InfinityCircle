@@ -2,6 +2,7 @@ from models.user import User
 from models.post import Post
 from models.comment import Comment
 from models.flow import Flow
+from models.mention import Mention
 from sqlmodel import create_engine, Session
 
 
@@ -14,6 +15,7 @@ def create_table() -> None:
     Post.metadata.create_all(bind=engine)
     Comment.metadata.create_all(bind=engine)
     Flow.metadata.create_all(bind=engine)
+    Mention.metadata.create_all(bind=engine)
 
 
 def get_session():
