@@ -15,7 +15,13 @@
             <div class=" post-header">
                 <div class="post-author">
                     <image src="{{ post.user.image_encoded }}" alt="Profile Image" class="profile-image"
+                        style="border: 3px solid {{ post.user.color }} "
+                        onerror="this.src='/static/assets/android-chrome-512x512.png'"></image> {% if post.mentions %}
+                    <i id="flow-mention" class="fa-solid fa-infinity"></i> {%
+                    for mention in post.mentions %} <image src="{{ mention.user.image_encoded }}" alt="Profile Image"
+                        class="profile-image" style="border: 3px solid {{ mention.user.color }} "
                         onerror="this.src='/static/assets/android-chrome-512x512.png'"></image>
+                    {% endfor %} {% endif %}
                     <div class="post-author-name">
                         {% if post.user.id != user.id %}
                         <a href="/user/cards/{{ post.user.id }}" id="connection-author">{{ post.user.name }}</a>

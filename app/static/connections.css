@@ -113,6 +113,17 @@ a {
     cursor: pointer;
 }
 
+#flow-mention {
+    font-size: 30px;
+    align-self: center;
+    text-align: center;
+    width: 5%;
+    position: relative;
+    bottom: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
 textarea,
 input {
     background: transparent;

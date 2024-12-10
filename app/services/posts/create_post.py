@@ -26,28 +26,34 @@ async def create_post(request: Request, new_post: CreatedPost, session: Session)
     )
 
     if new_post.mentions:
-        try:
-            mentioned_user = session.exec(
-                select(User).where(User.color == new_post.mentions)
-            ).one()
-        except Exception:
-            return RedirectResponse("/connections/", status_code=404)
+        mentions_list = []
+        users = new_post.mentions.strip().split(" ")
+        print(users)
+        for user_mentioned in users:
+            try:
+                mentioned_user = session.exec(
+                    select(User).where(User.color == user_mentioned)
+                ).one()
+                print("Esse existe: ", mentioned_user.color, mentioned_user.name)
 
-        mention = Mention(
-            user_id=user.id,
-            post_id=new_post.mentions,
-            comment_id=None,
-            user=mentioned_user,
-        )
-        mention.post = post
+                print(mentioned_user.id)
+                mention = Mention(
+                    user_id=mentioned_user.id,
+                    post_id=post.id,
+                    comment_id=None,
+                    user=mentioned_user,
+                    post=post,
+                )
+                print(mention.user.id)
 
-        post.mentions.append(mention)
+                session.add(mention)
 
-        user.mentions.append(mention)
+                mentions_list.append(mention)
 
-        session.add(mention)
+            except Exception:
+                print("Esse não existe: ", user_mentioned)
+                return RedirectResponse("/connections/", status_code=302)
 
-    print(user.posts)
     session.add(post)
 
     user.posts.append(post)
@@ -55,5 +61,8 @@ async def create_post(request: Request, new_post: CreatedPost, session: Session)
 
     session.add(user)
     session.commit()
+
+    for mention in mentions_list:
+        print(mention.user.name)
 
     return RedirectResponse("/connections/", status_code=302)
