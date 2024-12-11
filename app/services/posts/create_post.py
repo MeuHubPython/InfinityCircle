@@ -62,7 +62,4 @@ async def create_post(request: Request, new_post: CreatedPost, session: Session)
     session.add(user)
     session.commit()
 
-    for mention in mentions_list:
-        print(mention.user.name)
-
     return RedirectResponse("/connections/", status_code=302)
